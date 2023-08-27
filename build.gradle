@@ -6,11 +6,13 @@ repositories {
     mavenCentral()
 }
 
-def junitVersion = "5.8.2",
+def restAssuredVersion = '5.3.0',
+    junitVersion = "5.8.2",
     slf4jVersion = "1.7.32"
 
 dependencies {
     testImplementation(
+            "io.rest-assured:rest-assured:$restAssuredVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion"
     )
