@@ -6,7 +6,7 @@ repositories {
     mavenCentral()
 }
 
-def restAssuredVersion = '5.3.0',
+def restAssuredVersion = "5.1.1",
     junitVersion = "5.8.2",
     slf4jVersion = "1.7.32"
 
