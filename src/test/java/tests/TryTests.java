@@ -1,23 +1,30 @@
 package tests;
 
+import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
-import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TryTests {
 
     @Test
     void checkTotal() {
-        given()
-                .log().all()
+
+        Integer expectedTotal = 20;
+        Integer actualTotal = given()
+                .log().uri()
+                .log().body()
                 .when()
                 .get("https://selenoid.autotests.cloud/status")
                 .then()
-                .log().all()
+                .log().status()
+                .log().body()
                 .statusCode(200)
-                .body("total", is(20));
+                .extract()
+                .path("total");
+
+        assertEquals(expectedTotal, actualTotal);
     }
 }
 
